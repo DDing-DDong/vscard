@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Digital business card loaded.");
 
     const card = document.querySelector(".card");
     const emailButton = document.querySelector(".mail");
-    const emailText = emailButton ? emailButton.textContent.trim() : "";
+    const emailAddress = "abffks3@naver.com";
 
-    // 1. 마우스를 올리면 카드가 떠오르는 효과
+    // 카드 떠오르는 효과
     if (card) {
         card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
 
@@ -20,24 +19,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 2. 이메일 클릭 시 클립보드 복사
-    if (emailButton && emailText) {
-        emailButton.addEventListener("click", function (event) {
+    // 이메일 복사
+    if (emailButton) {
+        emailButton.addEventListener("click", async function (event) {
             event.preventDefault();
 
-            navigator.clipboard.writeText(emailText)
-                .then(function () {
-                    const originalText = emailButton.textContent;
+            try {
+                await navigator.clipboard.writeText(emailAddress);
 
-                    emailButton.textContent = "이메일 복사 완료!";
+                const originalText = emailButton.textContent;
 
-                    setTimeout(function () {
-                        emailButton.textContent = originalText;
-                    }, 1500);
-                })
-                .catch(function () {
-                    alert("이메일 복사에 실패했습니다.");
-                });
+                emailButton.textContent = "복사 완료!";
+
+                setTimeout(function () {
+                    emailButton.textContent = originalText;
+                }, 1500);
+
+            } catch (error) {
+                alert("이메일 복사에 실패했습니다.");
+                console.error(error);
+            }
         });
     }
+
 });
