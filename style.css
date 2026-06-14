@@ -125,17 +125,31 @@ body{
     color:#0d53f6;
 }
 
-.github{
+.github,
+.portfolio{
     grid-column:1 / -1;
-    background:#111827;
     color:#ffffff;
-    border:2px solid #111827;
     border-radius:10px;
+}
+
+.github{
+    background:#111827;
+    border:2px solid #111827;
 }
 
 .github:hover{
     background:#0d53f6;
     border-color:#0d53f6;
+}
+
+.portfolio{
+    background:#0d53f6;
+    border:2px solid #0d53f6;
+}
+
+.portfolio:hover{
+    background:#111827;
+    border-color:#111827;
 }
 
 @media(max-width:480px){
@@ -147,7 +161,8 @@ body{
         grid-template-columns:1fr;
     }
 
-    .github{
+    .github,
+    .portfolio{
         grid-column:auto;
     }
 
