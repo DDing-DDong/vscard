@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailButton = document.querySelector(".mail");
     const emailAddress = "abffks3@naver.com";
 
-    // 카드 떠오르는 효과
     if (card) {
         card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
 
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 이메일 복사
     if (emailButton) {
         emailButton.addEventListener("click", async function (event) {
             event.preventDefault();
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 await navigator.clipboard.writeText(emailAddress);
 
                 const originalText = emailButton.textContent;
-
                 emailButton.textContent = "복사 완료!";
 
                 setTimeout(function () {
